@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-[Preview](https://weather-bl3pxghp8-zhrodions-projects.vercel.app/)
+[Preview](https://weather-app-three-nu-75.vercel.app/)
 
 First, run the development server:
 pnpm dev
