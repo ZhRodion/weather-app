@@ -1,6 +1,5 @@
 'use client'
 
-import axios from 'axios'
 import { useState } from 'react'
 import { BsSearch } from 'react-icons/bs'
 
@@ -12,7 +11,7 @@ export default function WeatherSearch() {
 	const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}&units=metric`
 	const regex = /^[a-zA-Z]+$/
 
-	const fetchWeather = async (evt: any) => {
+	const fetchWeather = async (evt: { preventDefault: () => void }) => {
 		evt.preventDefault()
 
 		if (!regex.test(city)) {
@@ -23,16 +22,18 @@ export default function WeatherSearch() {
 		setError('')
 
 		try {
-			const response = await axios.get(apiUrl)
-			setWeather(response.data)
+			const response = await fetch(apiUrl)
+			if (!response.ok) {
+				throw new Error('Error fetching weather data')
+			}
+			const weatherData = await response.json()
+			setWeather(weatherData)
 		} catch (error) {
 			setError('Error fetching weather data. Please try again.')
 		}
 
 		setCity('')
 	}
-
-	console.log(weather)
 
 	return (
 		<div className='w-full max-w-[500px] h-[100px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[11] text-white flex flex-col gap-2'>
