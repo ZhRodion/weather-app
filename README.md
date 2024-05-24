@@ -6,4 +6,4 @@ First, run the development server:
 pnpm dev
 ```
 
-Preview: (https://weather-bl3pxghp8-zhrodions-projects.vercel.app/)
+[Preview](https://weather-bl3pxghp8-zhrodions-projects.vercel.app/)
