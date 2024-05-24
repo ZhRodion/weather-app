@@ -13,8 +13,10 @@ export default function Weather() {
 					alt='Weather image'
 				/>
 				<div className='absolute top-0 left-0 w-full h-full bg-black/40 z-10'></div>
-				<WeatherVisual />
-				<WeatherSearch />
+				<div className='w-full max-w-[500px] z-[11] absolute top-1/4 left-1/2 -translate-x-1/2 flex flex-col gap-12'>
+					<WeatherVisual />
+					<WeatherSearch />
+				</div>
 			</div>
 		</section>
 	)

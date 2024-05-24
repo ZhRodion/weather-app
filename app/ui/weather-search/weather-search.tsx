@@ -30,14 +30,14 @@ export default function WeatherSearch() {
 			const weatherData = await response.json()
 			setWeather(weatherData)
 		} catch (error) {
-			setError('Error fetching weather data. Please try again.')
+			setError('Please enter a valid city name.')
 		}
 
 		setCity('')
 	}
 
 	return (
-		<div className='w-full max-w-[500px] h-[100px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[11] text-white flex flex-col gap-2'>
+		<div className='w-full max-w-[500px] h-[100px] text-white flex flex-col gap-2'>
 			<form
 				className='w-full mx-auto py-3 px-2 flex items-center justify-between bg-transparent border border-grey-300 text-white rounded-2xl'
 				onSubmit={fetchWeather}
