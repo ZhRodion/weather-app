@@ -1,15 +1,16 @@
 'use client'
 
+import { useSearch } from '@/store/search'
 import { useState } from 'react'
 import { BsSearch } from 'react-icons/bs'
 
 export default function WeatherSearch() {
 	const [city, setCity] = useState('')
-	const [weather, setWeather] = useState({})
 	const [error, setError] = useState('')
 
 	const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}&units=metric`
 	const regex = /^[a-zA-Z]+$/
+	const { setWeather } = useSearch()
 
 	const fetchWeather = async (evt: { preventDefault: () => void }) => {
 		evt.preventDefault()
@@ -48,6 +49,7 @@ export default function WeatherSearch() {
 						placeholder='Search City'
 						value={city}
 						onChange={e => setCity(e.target.value)}
+						autoComplete='country-name'
 					/>
 				</div>
 				<button className='p-2' onClick={fetchWeather} type='button'>
